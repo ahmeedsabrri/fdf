@@ -6,7 +6,7 @@
 /*   By: asabri <asabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 03:18:11 by asabri            #+#    #+#             */
-/*   Updated: 2023/03/16 08:12:37 by asabri           ###   ########.fr       */
+/*   Updated: 2023/03/17 08:32:43 by asabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void    fill_mtrx(int *z_line, char *line)
     free(z);
 }
 
-void    ft_read_map(char const *map,fdf *data)
+void    ft_read_map(char const *map,t_fdf *data)
 {
     int fd;
     char *line;

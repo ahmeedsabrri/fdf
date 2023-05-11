@@ -6,7 +6,7 @@
 #    By: asabri <asabri@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/15 13:32:44 by asabri            #+#    #+#              #
-#    Updated: 2023/03/16 09:37:59 by asabri           ###   ########.fr        #
+#    Updated: 2023/03/17 14:21:22 by asabri           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = fdf
 CC = cc
 CFLAGS = -Wall -Wextra -Werror 
 MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
-SRC	= ft_atoi.c ft_split.c ft_substr.c get_next_line.c get_next_line_utils.c ft_read_map.c ft_wdcounter.c
+SRC	= ft_atoi.c ft_split.c ft_substr.c get_next_line.c get_next_line_utils.c ft_read_map.c ft_wdcounter.c draw.c my_mlx_pixel.c
 
 OBJS = ${SRC:.c=.o}
 

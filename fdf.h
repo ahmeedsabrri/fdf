@@ -6,7 +6,7 @@
 /*   By: asabri <asabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 13:32:21 by asabri            #+#    #+#             */
-/*   Updated: 2023/03/16 09:29:29 by asabri           ###   ########.fr       */
+/*   Updated: 2023/03/18 08:26:13 by asabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,25 @@
 #  define BUFFER_SIZE 1
 # endif
 
-typedef struct 
+typedef struct s_fdf 
 {
     int width;
     int height;
     int **z;
+    int zoom;
+    int color;
+    int color2;
+    double scale;
 
     void *mlx_ptr;
     void *win_ptr;
-}       fdf;
+
+    void *img_ptr;
+    char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}       t_fdf;
 
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	**ft_split(char const *s, char c);
@@ -44,7 +54,8 @@ void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 int	ft_atoi(const char *str);
 int		ft_wdcounter(char const *str, char c);
-void    ft_read_map(char const *map,fdf *data);
-void    ft_DDA(int x, int y, int x1, int y1,fdf *data);
+void    ft_read_map(char const *map,t_fdf *data);
+void draw(t_fdf *data);
+void	my_mlx_pixel_put(t_fdf *data, int x, int y, int color);
 // int     deal_key(int key, void *data);
 #endif // !FDF_H
