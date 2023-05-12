@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_malloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asabri <asabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/12 03:02:14 by asabri            #+#    #+#             */
-/*   Updated: 2023/05/12 22:48:31 by asabri           ###   ########.fr       */
+/*   Created: 2023/05/03 21:48:47 by asabri            #+#    #+#             */
+/*   Updated: 2023/05/08 18:45:17 by asabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-int main(int ac, char **av)
-{
-    t_map *data;
-    
-    data = NULL;
-    if (ac == 2)
-        data = parsing(av[1]);
-    int i;
-    int j;
+#include"ft_malloc.h"
 
-    i = 0;
-    j = 0;
-    while (data->x)
-    {
-        while (data->x[i][j])
-            printf("%d",data->x[i][j++]);
-        i++;
-        data = data->next;
-    }
-    return 0;
+void	*ft_malloc(size_t size, int mode)
+{
+	static t_malloc	*head;
+	void			*data;
+
+	if (mode == 1)
+	{
+		data = malloc(size);
+		if (!data)
+			return (exit(1), data);
+		addfront(&head, newmalloc(data));
+		return (data);
+	}
+	if (!mode)
+		return (listclear(&head), exit(1), NULL);
+	if (mode == 2)
+		return (listclear(&head), exit(0), NULL);
+	return (NULL);
 }
