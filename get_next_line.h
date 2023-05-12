@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   my_mlx_pixel.c                                     :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asabri <asabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/17 14:19:03 by asabri            #+#    #+#             */
-/*   Updated: 2023/03/17 14:19:33 by asabri           ###   ########.fr       */
+/*   Created: 2022/11/15 13:03:03 by asabri            #+#    #+#             */
+/*   Updated: 2023/05/12 04:28:04 by asabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-void	my_mlx_pixel_put(t_fdf *data, int x, int y, int color)
-{
-	char	*dst;
+# include <unistd.h>
+# include <fcntl.h>
+# include <stdlib.h>
+# include "libft/libft.h"
 
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
-}
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
+
+char	*get_next_line(int fd);
+#endif

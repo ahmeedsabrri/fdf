@@ -6,11 +6,11 @@
 /*   By: asabri <asabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 22:09:38 by asabri            #+#    #+#             */
-/*   Updated: 2023/03/16 06:13:46 by asabri           ###   ########.fr       */
+/*   Updated: 2023/05/12 04:28:27 by asabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "get_next_line.h"
 
 char	*ft_update_buffer(char *buffer)
 {
@@ -45,7 +45,7 @@ char	*ft_line(char *buffer)
 		return (NULL);
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
-	line = ft_calloc((i + 1), sizeof(char));
+	line = ft_calloc((i + 2), sizeof(char));
 	i = 0;
 	while (buffer[i] && buffer[i] != '\n')
 	{
