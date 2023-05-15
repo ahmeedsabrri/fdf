@@ -6,7 +6,7 @@
 /*   By: asabri <asabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 02:49:57 by asabri            #+#    #+#             */
-/*   Updated: 2023/05/12 22:30:29 by asabri           ###   ########.fr       */
+/*   Updated: 2023/05/14 16:24:10 by asabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int *get_z(char *lwyen)
     tab = ft_malloc(2 * sizeof(int), 1);
     tab[0] = ft_atoi(coord[0]);
     tab[1] = 0xffffff;
-    // (coord[1]) && (tab[1] = hextodec(coord[1]));
+    (coord[1]) && (tab[1] = hextodec(coord[1]));
     return(tab);
 }
 
@@ -39,13 +39,14 @@ int **get_x(char *line)
     char **mtr;
     int **x;
     int i;
-
     
     mtr = ft_split(line, 32);
-    x = ft_malloc(mtrlen((((void **)mtr) + 1)) * sizeof(int *), 1);
+    x = ft_malloc((mtrlen((void **)mtr) + 1) * sizeof(int *), 1);
     i = -1;
     while(mtr[++i])
+    {
         x[i] = get_z(mtr[i]);
+    }
     x[i] = NULL;
     return(x);
 }
@@ -55,6 +56,7 @@ t_map *parsing(char *arg)
     int fd;
     char *line;
     t_map *map;
+    // t_point *point;
 
     map = NULL;
     fd = open(arg, O_RDONLY);

@@ -6,7 +6,7 @@
 /*   By: asabri <asabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 21:58:49 by asabri            #+#    #+#             */
-/*   Updated: 2023/05/12 22:04:38 by asabri           ###   ########.fr       */
+/*   Updated: 2023/05/14 16:23:53 by asabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,21 @@ t_map	*ft_lstlast(t_map *lst)
 void	ft_lstadd_back(t_map **lst, t_map *new)
 {
 	t_map	*ptr;
+	int len;
 
+	len = 0;
 	ptr = *lst;
-	if (*lst == NULL)
-		*lst = new;
-	else
+	(!*lst) && (*lst = new);
+	if(ptr)
 	{
-		ptr = ft_lstlast(*(lst));
+		len = mtrlen((void **)(*lst)->x);
+		while(ptr->next)
+		{
+			if(len != mtrlen((void **)new->x))
+				ft_malloc(0, 0);
+			ptr = ptr->next;
+		}
 		ptr->next = new;
-	}
+	}	
+		
 }
