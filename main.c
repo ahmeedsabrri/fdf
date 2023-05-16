@@ -6,7 +6,7 @@
 /*   By: asabri <asabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 03:02:14 by asabri            #+#    #+#             */
-/*   Updated: 2023/05/16 01:32:06 by asabri           ###   ########.fr       */
+/*   Updated: 2023/05/16 02:08:15 by asabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int main(int ac, char **av)
     data = ft_malloc(sizeof(t_data),1);
     if (!data)
         ft_malloc(0,0);
-
+    
     // p.width = 0;
     // p.height = 0;
     if (ac == 2)
@@ -52,8 +52,13 @@ int main(int ac, char **av)
         //     map = map->next;
         // }
         // printf("zab = %d", map.x[2][2]);
+        data->nc = 0;
+        data->nz = 0;
+        data->xup = p.width;
+        data->yup = p.height;
+        data->zoom = 0;
         data->mlx = mlx_init();
-        data->win = mlx_new_window(data->mlx,800,600,"FDF");
+        data->win = mlx_new_window(data->mlx,1500,1000,"FDF");
         draw(map,p,data);
         mlx_loop(data->mlx);
     

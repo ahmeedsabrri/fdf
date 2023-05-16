@@ -6,7 +6,7 @@
 /*   By: asabri <asabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 02:50:11 by asabri            #+#    #+#             */
-/*   Updated: 2023/05/16 01:32:50 by asabri           ###   ########.fr       */
+/*   Updated: 2023/05/16 01:54:08 by asabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,12 @@ typedef struct s_data
 
     int     sx;
     int     sy;
+    int		zoom;
+	int		xup;
+	int		yup;
+    int		nz;
+	int		nc;
     
-
     void	*img;
 	char	*addr;
 	int		bits_per_pixel;
