@@ -6,17 +6,17 @@
 #    By: asabri <asabri@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/12 04:45:23 by asabri            #+#    #+#              #
-#    Updated: 2023/05/15 04:35:57 by asabri           ###   ########.fr        #
+#    Updated: 2023/05/15 18:58:22 by asabri           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 
 SRC = get_next_line.c parsing.c main.c map_utis.c libftmalloc/ft_malloc.c libftmalloc/utils_malloc.c \
-	utils.c draw.c
+	utils.c draw.c rotation.c
 
 CC = cc
-FLAGS = -Wall -Wextra -Werror 
+FLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 RM = rm -rf
 HEADER = fdf.h   
 

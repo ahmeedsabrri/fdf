@@ -6,7 +6,7 @@
 /*   By: asabri <asabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 02:50:11 by asabri            #+#    #+#             */
-/*   Updated: 2023/05/15 04:36:25 by asabri           ###   ########.fr       */
+/*   Updated: 2023/05/16 01:32:50 by asabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,11 @@ typedef struct s_map
 
 typedef struct s_point
 {
+    int height;
+    int width;
     double x;
     double y;
-    double z;
+    int z;
     double c;
     
 }               t_point;
@@ -40,9 +42,12 @@ typedef struct s_data
     void	*mlx;
 	void	*win;
     
-    int     rx;
-    int     ry;
-    int     rz;
+    double     rx;
+    double     ry;
+    double     rz;
+
+    int     sx;
+    int     sy;
     
 
     void	*img;
@@ -56,11 +61,12 @@ void	ft_lstadd_back(t_map **lst, t_map *new);
 t_map	*ft_lstlast(t_map *lst);
 t_map	*ft_lstnew(int **content);
 int	ft_lstsize(t_map *list);
-t_map *parsing(char *arg);
-int **get_x(char *line);
+t_map *parsing(char *arg,t_point *p);
+int **get_x(char *line,int *count);
 int *get_z(char *lwyen);
 int mtrlen(void **mtr);
 int	hextodec(char *str);
-void draw(t_map *map,t_data *img);
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void draw(t_map *map,t_point p,t_data *data);
+t_point rotation(t_point point, t_data *data);
+//void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 #endif
