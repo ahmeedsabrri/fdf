@@ -6,7 +6,7 @@
 /*   By: asabri <asabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 01:04:12 by asabri            #+#    #+#             */
-/*   Updated: 2023/05/17 04:39:46 by asabri           ###   ########.fr       */
+/*   Updated: 2023/05/17 08:37:02 by asabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char	**ft_split(char const *s, char c)
 		checkstr(&end, &start, r, c);
 		p[i] = ft_substr(s, start, end - start);
 		if (p[i] == NULL)
-			return (ft_malloc(0, 0),NULL);
+			return (ft_malloc(0, 0), NULL);
 		start = end;
 		i++;
 	}

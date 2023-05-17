@@ -6,46 +6,42 @@
 /*   By: asabri <asabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 15:30:47 by asabri            #+#    #+#             */
-/*   Updated: 2023/05/17 03:37:24 by asabri           ###   ########.fr       */
+/*   Updated: 2023/05/17 11:05:10 by asabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void DDA(double x,double y,double x1,double y1,t_data *data,t_point p)
+double	ft_fabs(double dx, double dy)
 {
-    
-    int i;
-    double dx;
-    double dy;
-    double xinc;
-    double yinc;
-    int step;
-    
+	if (fabs(dx) > fabs(dy))
+		return (fabs(dx));
+	else
+		return (fabs(dy));
+}
 
-    dx = x1 - x;
-    dy = y1 - y;
+void	dda(t_data *data, t_point p, t_point p1)
+{
+	double	dx;
+	double	dy;
+	double	xinc;
+	double	yinc;
+	int		step;
 
-    if (fabs(dx) > fabs(dy))
-        step = fabs(dx);
-    else
-        step = fabs(dy);
-    
-    xinc = dx/step;
-    yinc = dy/step;
-    i = 0;
-
-    while (i <= step)
-    {
-        if (x > 0 && x < 1500 && y < 1000 && y > 0)
-        {
-            my_mlx_pixel_put(data,x,y,p.c);
-            x = x + xinc;
-            y = y + yinc;
-        }
-        i++;
-
-    }
+	dx = p1.x - p.x;
+	dy = p1.y - p.y;
+	step = ft_fabs(dx, dy);
+	xinc = dx / step;
+	yinc = dy / step;
+	while (step--)
+	{
+		if (p.x > 0 && p.x < 1500 && p.y < 1000 && p.y > 0)
+		{
+			my_mlx_pixel_put(data, p.x, p.y, p.c);
+			p.x = p.x + xinc;
+			p.y = p.y + yinc;
+		}
+	}
 }
 
 t_point	update_dist(t_point p, t_data *ptr)
@@ -69,53 +65,43 @@ t_point	update_dist(t_point p, t_data *ptr)
 	p.x += 750 ;
 	p.y += 500 ;
 	p.c += ((0xaaaa + ptr->nc) * (ptr->nc * 10));
-    return (p);
+	return (p);
 }
 
-void draw(t_map *map,t_point p,t_data *data)
+t_point	fill_point(t_point p, int *str,	t_index n, t_data *data)
 {
-    t_point p1;
-    t_point p2;
-    int **mtr;
-    int i;
-    int j;
+	(n.mode == 0) && (p.z = str[0], p.c = str[1], p.y = n.j, p.x = n.i);
+	(n.mode == 1) && (p.x = n.i, p.y = n.j + 1, p.z = str[0], p.c = str[1]);
+	(n.mode == 2) && (p.x = (n.i + 1), p.y = n.j, p.z = str[0], p.c = str[1]);
+	p = update_dist(p, data);
+	return (p);
+}
 
-    i = 0;
-    j = 0;
-    while(map)
-    {
-        i = 0;
-        mtr = map->x;
-        while(mtr[i])
-        {
-            p.z = mtr[i][0];
-            p.c = mtr[i][1];
-            p.y = j;
-            p.x = i;
-            if (map->next)
-            {   
-                p1.x = i;
-                p1.y = (j + 1) ;
-                p1.z = map->next->x[i][0];
-                p1.c = map->next->x[i][1];
-            }
-            if (mtr[i + 1]!= NULL)
-            {   
-                p2.x = (i + 1) ;
-                p2.y = j ;
-                p2.z = mtr[i + 1][0];
-                p2.c = mtr[i + 1][1];
-            }
-            p = update_dist(p,data);
-            p1 = update_dist(p1,data);
-            p2 = update_dist(p2,data);
-            if (i < p.width - 1 )
-                DDA(p.x ,p.y ,p2.x ,p2.y ,data,p);
-            if (j < p.height - 1 )
-                DDA(p.x ,p.y ,p1.x ,p1.y ,data,p);
-            i++;
-        }
-        j++;
-        map = map->next;
-    }
+void	draw(t_map *map, t_point p, t_data *data)
+{
+	t_point	p1;
+	t_point	p2;
+	t_index	n;
+	int		**mtr;
+
+	n.i = 0;
+	n.j = 0;
+	while (map)
+	{
+		n.i = -1;
+		mtr = map->x;
+		while (mtr[++n.i])
+		{
+			n.mode = 0;
+			p = fill_point(p, mtr[n.i], n, data);
+			(map->next) && (n.mode = 1,
+				p1 = fill_point(p1, map->next->x[n.i], n, data), 0);
+			(mtr[n.i + 1] != NULL) && (n.mode = 2,
+				p2 = fill_point(p2, mtr[n.i + 1], n, data), 0);
+			(n.i < p.width - 1) && (dda(data, p, p2), 0);
+			(n.j < p.height - 1) && (dda(data, p, p1), 0);
+		}
+		n.j++;
+		map = map->next;
+	}
 }

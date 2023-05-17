@@ -6,7 +6,7 @@
 #    By: asabri <asabri@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/12 04:45:23 by asabri            #+#    #+#              #
-#    Updated: 2023/05/17 04:23:26 by asabri           ###   ########.fr        #
+#    Updated: 2023/05/17 09:56:15 by asabri           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ libftrule :
 		$(CC) $(FLAGS) -Imlx -o $@ -c $<
 
 $(NAME) : $(OBJS) $(HEADER_M) libftrule
-		$(CC) $(FLAGS) $(OBJS) -Lmlx -lmlx -framework OpenGL -framework AppKit libft_42/libft.a -o $@ 
+		$(CC) $(FLAGS) $(OBJS) -lmlx -framework OpenGL -framework AppKit libft_42/libft.a -o $@ 
  
 clean :
 	$(RM) $(OBJS) 
