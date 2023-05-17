@@ -6,7 +6,7 @@
 /*   By: asabri <asabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 02:49:57 by asabri            #+#    #+#             */
-/*   Updated: 2023/05/16 01:32:20 by asabri           ###   ########.fr       */
+/*   Updated: 2023/05/17 05:32:48 by asabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int **get_x(char *line,int *count)
     
     mtr = ft_split(line, 32);
     x = ft_malloc((mtrlen((void **)mtr) + 1) * sizeof(int *), 1);
+    if (!x)
+        ft_malloc(0, 0);
     i = -1;
     while(mtr[++i])
         x[i] = get_z(mtr[i]);
@@ -57,14 +59,13 @@ t_map *parsing(char *arg,t_point *p)
     int count;
     char *line;
     t_map *map;
-    // t_point *point;
 
     map = NULL;
     p->height = 0;
     count = 0;
     fd = open(arg, O_RDONLY);
     if(fd < 0)
-        return(NULL); //TODO : invalid file free with ur gc;
+        return(ft_malloc(0,0),NULL);
     line = get_next_line(fd);
     while(line)
     {

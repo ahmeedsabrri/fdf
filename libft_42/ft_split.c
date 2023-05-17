@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asabri <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: asabri <asabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 01:04:12 by asabri            #+#    #+#             */
-/*   Updated: 2022/11/07 11:53:48 by asabri           ###   ########.fr       */
+/*   Updated: 2023/05/17 04:39:46 by asabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 static void	checkstr(unsigned int *end, unsigned int *start,
@@ -19,20 +20,6 @@ char const *s, char c)
 	*end = *start;
 	while (s[*end] != c && s[*end] != 0)
 		*end += 1;
-}
-
-static char	**free_(char **array)
-{
-	unsigned int	i;
-
-	i = 0;
-	while (array[i])
-	{
-		free(array[i]);
-		i++;
-	}
-	free(array);
-	return (NULL);
 }
 
 static unsigned int	getnb(char const *s, char c)
@@ -64,9 +51,9 @@ char	**ft_split(char const *s, char c)
 
 	start = 0;
 	end = 0;
-	p = malloc(sizeof(char *) * (getnb(s, c) + 1));
+	p = ft_malloc((sizeof(char *) * (getnb(s, c) + 1)), 1);
 	if (!p)
-		return (NULL);
+		return (ft_malloc(0, 0));
 	r = (char *)s;
 	i = 0;
 	while (i < getnb(s, c))
@@ -74,7 +61,7 @@ char	**ft_split(char const *s, char c)
 		checkstr(&end, &start, r, c);
 		p[i] = ft_substr(s, start, end - start);
 		if (p[i] == NULL)
-			return (free_(p));
+			return (ft_malloc(0, 0),NULL);
 		start = end;
 		i++;
 	}

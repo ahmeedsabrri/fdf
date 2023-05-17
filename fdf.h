@@ -6,7 +6,7 @@
 /*   By: asabri <asabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 02:50:11 by asabri            #+#    #+#             */
-/*   Updated: 2023/05/16 01:54:08 by asabri           ###   ########.fr       */
+/*   Updated: 2023/05/17 01:42:49 by asabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_data
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+    char *fl;
 }t_data;
 
 void	ft_lstadd_back(t_map **lst, t_map *new);
@@ -72,5 +73,5 @@ int mtrlen(void **mtr);
 int	hextodec(char *str);
 void draw(t_map *map,t_point p,t_data *data);
 t_point rotation(t_point point, t_data *data);
-//void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 #endif

@@ -6,17 +6,17 @@
 #    By: asabri <asabri@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/12 04:45:23 by asabri            #+#    #+#              #
-#    Updated: 2023/05/15 18:58:22 by asabri           ###   ########.fr        #
+#    Updated: 2023/05/17 04:23:26 by asabri           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 
 SRC = get_next_line.c parsing.c main.c map_utis.c libftmalloc/ft_malloc.c libftmalloc/utils_malloc.c \
-	utils.c draw.c rotation.c
+	utils.c draw.c rotation.c my_mlx_pixel_put.c
 
 CC = cc
-FLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+FLAGS = -Wall -Wextra -Werror 
 RM = rm -rf
 HEADER = fdf.h   
 
