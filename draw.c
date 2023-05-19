@@ -6,7 +6,7 @@
 /*   By: asabri <asabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 15:30:47 by asabri            #+#    #+#             */
-/*   Updated: 2023/05/17 11:05:10 by asabri           ###   ########.fr       */
+/*   Updated: 2023/05/19 05:09:45 by asabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,9 @@ void	dda(t_data *data, t_point p, t_point p1)
 	while (step--)
 	{
 		if (p.x > 0 && p.x < 1500 && p.y < 1000 && p.y > 0)
-		{
 			my_mlx_pixel_put(data, p.x, p.y, p.c);
-			p.x = p.x + xinc;
-			p.y = p.y + yinc;
-		}
+		p.x = p.x + xinc;
+		p.y = p.y + yinc;
 	}
 }
 
@@ -60,7 +58,7 @@ t_point	update_dist(t_point p, t_data *ptr)
 	p.x -= (ptr->xup * dist) / 2;
 	p.y -= (ptr->yup * dist) / 2;
 	if (p.z)
-		p.z *= ptr->nz;
+		p.z *= ptr->nz + 1;
 	p = rotation(p, ptr);
 	p.x += 750 ;
 	p.y += 500 ;

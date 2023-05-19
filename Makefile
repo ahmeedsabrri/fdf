@@ -6,7 +6,7 @@
 #    By: asabri <asabri@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/12 04:45:23 by asabri            #+#    #+#              #
-#    Updated: 2023/05/17 09:56:15 by asabri           ###   ########.fr        #
+#    Updated: 2023/05/17 11:28:52 by asabri           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRC = get_next_line.c parsing.c main.c map_utis.c libftmalloc/ft_malloc.c libftm
 	utils.c draw.c rotation.c my_mlx_pixel_put.c
 
 CC = cc
-FLAGS = -Wall -Wextra -Werror 
+FLAGS = -Wall -Wextra -Werror -Ofast
 RM = rm -rf
 HEADER = fdf.h   
 

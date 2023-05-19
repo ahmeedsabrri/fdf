@@ -6,7 +6,7 @@
 /*   By: asabri <asabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 02:50:11 by asabri            #+#    #+#             */
-/*   Updated: 2023/05/17 11:07:54 by asabri           ###   ########.fr       */
+/*   Updated: 2023/05/17 14:49:06 by asabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 typedef struct s_map
 {
 	int				**x;
-	struct s_map	*bottom;
 	struct s_map	*next;
 }				t_map;
 
@@ -59,6 +58,8 @@ typedef struct s_data
 	int		line_length;
 	int		endian;
 	char	*fl;
+
+	t_map	*map;
 }				t_data;
 
 typedef struct s_index
