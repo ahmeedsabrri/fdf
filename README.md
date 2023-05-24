@@ -88,6 +88,3 @@ Contributions to the FDF project are welcome! If you want to contribute, please 
 4. Push your changes to your forked repository.
 5. Open a pull request on the main repository.
 
-## License
-
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT). You can find the full license text in the [LICENSE](LICENSE) file.
